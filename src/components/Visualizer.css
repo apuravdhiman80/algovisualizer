@@ -1,0 +1,132 @@
+.visualizer {
+  padding: 20px;
+  text-align: center;
+  color: white;
+}
+
+.visualization-area {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  background: linear-gradient(120deg, #2e2e3e, #1b1b2f);
+  border: 3px solid #ff7eb3;
+  border-radius: 15px;
+  margin: 20px auto;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
+}
+
+.visualization-area:hover {
+  transform: scale(1.01);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+}
+
+.graph {
+  width: 100%;
+  height: 100%;
+}
+
+.node {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.node circle {
+  fill: #ff7eb3;
+  stroke: white;
+  stroke-width: 3px;
+  cursor: pointer;
+  transition: transform 0.4s ease, fill 0.3s ease, stroke-width 0.3s ease;
+}
+
+.node circle:hover {
+  fill: #ffb3c7;
+  stroke-width: 4px;
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(255, 126, 179, 0.7);
+}
+
+.node text {
+  fill: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.edge {
+  stroke: #ffffff80;
+  stroke-width: 2;
+  transition: stroke 0.5s ease, opacity 0.5s ease;
+}
+
+.edge.active {
+  stroke: #00ff7f;
+  stroke-width: 4;
+  opacity: 1;
+}
+
+.edge.inactive {
+  opacity: 0.3;
+}
+
+.edge-text {
+  fill: #ffb3c7;
+  font-size: 14px;
+  font-weight: bold;
+  pointer-events: none;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.visualization-header {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff7eb3;
+  text-shadow: 2px 2px 10px rgba(255, 126, 179, 0.7);
+}
+
+.tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  pointer-events: none;
+  transform: translate(-50%, -120%);
+  display: none;
+  transition: opacity 0.3s ease;
+}
+
+.tooltip.visible {
+  display: block;
+  opacity: 1;
+}
+
+@keyframes draw-edge {
+  from {
+    stroke-dasharray: 0, 1000;
+  }
+  to {
+    stroke-dasharray: 1000, 0;
+  }
+}
+
+.edge.active {
+  animation: draw-edge 1s linear;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.node {
+  animation: fade-in 0.8s ease;
+}

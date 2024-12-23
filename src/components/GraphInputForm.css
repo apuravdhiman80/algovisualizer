@@ -1,0 +1,19 @@
+.graph-input-form {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  textarea {
+    width: 80%;
+    height: 150px;
+    margin: 10px 0;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  
